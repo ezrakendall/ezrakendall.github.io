@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>writing · ezra kendall</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<style>
+:root{--bg:#f1ebe0;--card:#e6dccb;--ink:#2f2a22;--soft:#6f6555;--moss:#6b7a4f;--clay:#b5714c;--line:#d2c6b0;color-scheme:light;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1b16;--card:#2a2720;--ink:#ece4d4;--soft:#a89e8a;--moss:#9db27a;--clay:#d79068;--line:#3a362c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1b16;--card:#2a2720;--ink:#ece4d4;--soft:#a89e8a;--moss:#9db27a;--clay:#d79068;--line:#3a362c;color-scheme:dark}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 'DM Sans',system-ui,sans-serif;transition:background .4s,color .4s}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;text-transform:lowercase}
+.ui{text-transform:lowercase}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(20px,4vw,56px) 14px;font-size:15px;color:var(--ink);text-transform:lowercase;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav a{text-decoration:none}
+nav .links{display:flex;gap:24px;align-items:center}
+nav .links a:hover,nav .links a.here{color:var(--moss)}
+.leaf{display:inline-block;transition:transform .5s}
+.leaf:hover{transform:rotate(25deg)}
+.theme{background:none;border:1px solid var(--line);border-radius:99px;padding:6px 14px;color:var(--soft)}
+.theme:hover{border-color:var(--moss)}
+@media(max-width:620px){nav .links{gap:12px}nav .links a:not(.here):not([href="index.html#contact"]){display:none}}
+main{max-width:720px;margin:0 auto;padding:calc(130px + env(safe-area-inset-top,0px)) 24px 60px}
+.eyebrow{font-size:14px;letter-spacing:.14em;color:var(--clay);margin:0 0 14px;text-transform:lowercase}
+h1{font:600 clamp(44px,9vw,76px)/1 'Fraunces',Georgia,serif;margin:0 0 14px;letter-spacing:-.025em;text-transform:lowercase}
+.hint{color:var(--soft);margin:0 0 44px;text-transform:lowercase}
+.card{display:block;text-decoration:none;padding:26px 0;border-top:1px solid var(--line);transition:padding .25s}
+.card:hover{padding-left:12px}
+.card:hover h3{color:var(--moss)}
+.card small{color:var(--clay);letter-spacing:.1em;font-size:13px;text-transform:lowercase}
+.card h3{font:600 clamp(24px,4vw,32px)/1.2 'Fraunces',Georgia,serif;margin:6px 0;transition:color .2s}
+.card p{margin:0;color:var(--soft)}
+.back{display:inline-block;margin-bottom:30px;color:var(--soft);text-decoration:none;text-transform:lowercase}
+.back:hover{color:var(--moss)}
+article h1{font-size:clamp(36px,7vw,58px);text-transform:none}
+.meta{color:var(--clay);font-size:14px;letter-spacing:.1em;margin:0 0 40px;text-transform:lowercase}
+.post{font:400 20px/1.8 'Fraunces',Georgia,serif}
+.post p{margin:0 0 1.3em}
+.post h2,.post h3{font-family:'Fraunces',Georgia,serif;line-height:1.2;margin:1.8em 0 .5em}
+.post img{max-width:100%;height:auto;border-radius:12px;display:block;margin:1.6em auto}
+.post blockquote{margin:1.5em 0;padding:2px 0 2px 22px;border-left:3px solid var(--moss);color:var(--soft);font-style:italic}
+.post a{color:var(--moss)}
+.post code{font:15px ui-monospace,monospace;background:var(--card);padding:2px 6px;border-radius:6px}
+.post pre{background:var(--card);padding:16px 18px;border-radius:12px;overflow-x:auto}
+.post pre code{background:none;padding:0}
+.post hr{border:0;border-top:1px solid var(--line);margin:2.4em 0}
+.note{background:var(--card);border-radius:14px;padding:16px 20px;color:var(--soft);font-size:15px;margin:0 0 30px;text-transform:lowercase}
+footer{max-width:720px;margin:0 auto;padding:22px 24px;border-top:1px solid var(--line);color:var(--soft);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;text-transform:lowercase}
+</style>
+</head>
+<body>
+<nav>
+ <a href="index.html">ezra kendall <span class="leaf">🌿</span></a>
+ <div class="links"><a href="index.html#about">about</a><a href="index.html#work">work</a><a href="index.html#photos">photos</a><a class="here" href="blog.html">blog</a><a href="index.html#contact">contact</a><button class="theme" id="theme">dusk mode</button></div>
+</nav>
+
+<main id="app"></main>
+<footer><span>© ezra kendall</span><span>made with a lot of coffee and too many open tabs 🌿</span></footer>
+
+<script>
+const app=document.getElementById('app');
+const pad=n=>String(n).padStart(2,'0');
+const esc=t=>t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const md=t=>window.marked?marked.parse(t):t.split(/\n\s*\n/).map(p=>'<p>'+esc(p)+'</p>').join('');
+const fmt=d=>{const x=new Date(d+'T12:00:00');return isNaN(x)?'':x.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})};
+const mins=b=>Math.max(1,Math.round(b.split(/\s+/).length/200))+' min read';
+function parse(raw,slug){
+ const m=raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/),meta={};let body=raw;
+ if(m){body=m[2];m[1].split('\n').forEach(l=>{const i=l.indexOf(':');if(i>0)meta[l.slice(0,i).trim()]=l.slice(i+1).trim()})}
+ return{slug,title:meta.title||slug,date:meta.date||'',summary:meta.summary||'',body}}
+const sample=parse(['---','title: this is a sample post','date: 2026-10-27','summary: delete me once your first real essay is up.','---','this is what an essay looks like on your site. you write in plain text, and a few simple symbols make it fancy.','','## a heading','','use **bold**, *italics*, and [links](https://example.com). start a line with > for a quote:','','> a good sentence is worth keeping.','','add a photo with `![caption](images/blog/photo.jpg)`.'].join('\n'),'sample');
+let posts=[];
+async function load(){
+ for(let i=1;i<=100;i++){
+  const s='post-'+pad(i);
+  try{const r=await fetch('posts/'+s+'.md');if(!r.ok)break;const t=await r.text();
+   if(/^\s*<(!doctype|html)/i.test(t))break;posts.push(parse(t.replace(/\r\n/g,'\n'),s))}catch(e){break}}
+ if(!posts.length)posts=[sample];
+ posts.sort((a,b)=>b.date.localeCompare(a.date)||b.slug.localeCompare(a.slug));
+ route()}
+function route(){
+ const id=location.hash.slice(1),p=posts.find(x=>x.slug===id);
+ if(p){
+  document.title=p.title+' · ezra kendall';
+  app.innerHTML='<a class="back" href="#all">← all writing</a><article><h1>'+esc(p.title)+'</h1><p class="meta">'+[fmt(p.date),mins(p.body)].filter(Boolean).join(' · ')+'</p><div class="post">'+md(p.body)+'</div></article>';
+ }else{
+  document.title='writing · ezra kendall';
+  app.innerHTML='<p class="eyebrow">blog</p><h1>writing</h1><p class="hint">essays, thoughts, and things i’m still figuring out.</p>'+
+   (posts[0]===sample?'<p class="note">this is a sample post. add your own in the posts folder and it will replace this.</p>':'')+
+   posts.map(p=>'<a class="card" href="#'+p.slug+'"><small>'+[fmt(p.date),mins(p.body)].filter(Boolean).join(' · ')+'</small><h3>'+esc(p.title)+'</h3>'+(p.summary?'<p>'+esc(p.summary)+'</p>':'')+'</a>').join('');
+ }
+ scrollTo(0,0)}
+addEventListener('hashchange',route);
+load();
+
+const root=document.documentElement,tb=document.getElementById('theme');
+try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t}catch(e){}
+const dark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+const label=()=>tb.textContent=dark()?'daylight mode':'dusk mode';
+tb.onclick=()=>{root.dataset.theme=dark()?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}label()};label();
+</script>
+</body>
+</html>
